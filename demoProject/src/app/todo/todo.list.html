@@ -1,0 +1,21 @@
+<style> 
+    .done {
+        text-decoration: line-through;
+        background-color: grey;
+        color: #fff;
+    }
+</style>
+<div class="col-sm-12">
+    <ul class="list-group">
+        <li class="list-group-item clearfix task" *ngFor="let todo of todos">
+            <p class="lead" [ngClass]="{ 'done' : todo.done }">{{todo.name}}</p>
+            <div>
+                <span class="pull-right">
+                <!--<button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>-->
+                <button class="btn btn-primary btn-xs" (click)="done(todo)"><span class="glyphicon glyphicon-ok"></span></button>
+                <button class="btn btn-danger btn-xs" (click)="delete(todo)"><span class="glyphicon glyphicon-remove"></span></button>
+                </span>
+            </div>
+        </li>
+    </ul>
+</div>
