@@ -6,12 +6,7 @@ import * as fromActions from '../common/actions';
 
 @Component({
     selector: 'todo-form',
-    templateUrl: 'todo.form.html',
-    styles: [
-        `
-        
-        `
-    ]
+    templateUrl: 'todo.form.html'
 })
 
 export class ToDoForm implements OnInit {
