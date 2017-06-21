@@ -12,9 +12,11 @@ import * as fromActions from '../common/actions';
 
 export class ToDoComponent implements OnInit {
     todos$: Observable<ToDo[]>;
+    todo$: Observable<ToDo>;
     constructor(private store: Store<fromReducer.State>, private todoSvc: ToDoService) { }
 
     ngOnInit() {
        this.todos$ = this.store.select(fromReducer.getToDos);
+       this.todo$ = this.store.select('todo');
     }
 }

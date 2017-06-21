@@ -9,4 +9,9 @@ export class ToDo {
         this.done = false;
         this.deleted = false;
     }
+
+    clear() {
+        this.name = '';
+        this.id = 0;
+    }
 }

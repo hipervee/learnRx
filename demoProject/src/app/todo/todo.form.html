@@ -1,8 +1,10 @@
-<div class="col-sm-12">
-    <div class="input-group">
-        <input [(ngModel)]="name" type="text" class="form-control" placeholder="Add ToDo">
-        <span class="input-group-btn">
-        <button class="btn btn-secondary" type="button" (click)="add()">Add</button>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="input-group">
+            <input [(ngModel)]="todo.name" type="text" class="form-control" placeholder="Add ToDo">
+            <span class="input-group-btn">
+        <button class="btn btn-secondary" type="button" (click)="add()">Save</button>
       </span>
+        </div>
     </div>
 </div>

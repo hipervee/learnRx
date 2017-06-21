@@ -12,11 +12,11 @@ export class ToDoEffects {
 
     @Effect()
     add$: Observable<Action> = this.actions$
-        .ofType(fromActions.ActionTypes.ADD)
+        .ofType(fromActions.ActionTypes.SAVE)
         .map(toPayload)
         .switchMap(query => {
             console.log("Inside Effetcs");
-            return Observable.of({ type: 'ADD', payload: new ToDo(99, 'sdfsdf') });
+            return Observable.of({ type: 'SAVE', payload: new ToDo(99, 'sdfsdf') });
         });
 
     constructor(private actions$: Actions) { }

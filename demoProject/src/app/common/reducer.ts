@@ -4,34 +4,55 @@ import { createSelector } from 'reselect';
 import { Action } from '@ngrx/store';
 
 export interface State {
-    todos?: ToDo[]
+    todos?: ToDo[],
+    todo?: ToDo
 };
 
 const initialState: State = {
     todos: [
-        new ToDo(0, "Breakfast"),
-        new ToDo(0, "Lunch"),
-        new ToDo(0, "Now do some work")
-    ]
+        new ToDo(1, "Breakfast"),
+        new ToDo(2, "Lunch"),
+        new ToDo(3, "Now do some work")
+    ],
+    todo: new ToDo(0, '')
 };
 
 export function reducer(state = initialState, action: Action): State {
     switch (action.type) {
-        case fromActions.ActionTypes.ADD: {
-            let todos = [new ToDo(0, action.payload)];
-            return {
-                todos: state.todos.concat(todos)
-            };
+        case fromActions.ActionTypes.SAVE: {
+            let todo = { ...action.payload };
+            let index = state.todos.findIndex(o => o.id == todo.id);
+
+            if (index > -1) {
+                return Object.assign({}, state, {
+                    todos: state.todos.slice(0, index)
+                        .concat(Object.assign({}, state.todos[index], todo))
+                        .concat(state.todos.slice(index + 1)),
+                    todo: new ToDo(0, '')
+                });
+            } else {
+                todo.id = state.todos.length + 1;
+                return Object.assign({}, state, {
+                    todos: [...state.todos, todo],
+                    todo: new ToDo(0, '')
+                });
+            }
+        };
+
+        case fromActions.ActionTypes.EDIT: {
+            let index = state.todos.findIndex(o => o.id == action.payload)
+            return Object.assign({}, state, {
+                todo: Object.assign({}, state.todos[index])
+            });
         };
         case fromActions.ActionTypes.DELETE: {
-            let toDos = state.todos.filter(o => o.name != action.payload);
-            return {
-                todos: toDos
-            };
+            return Object.assign({}, state, {
+                todos: state.todos.filter(o => o.id != action.payload)
+            });
         };
         case fromActions.ActionTypes.DONE: {
             let todo = state.todos.find(o => o.name == action.payload);
-            if(todo) {
+            if (todo) {
                 todo.done = !todo.done
             }
             return state;

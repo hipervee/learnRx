@@ -24,6 +24,10 @@ export class ToDoList implements OnInit {
     }
 
     delete(todo: ToDo) {
-        this.store.dispatch({ type: fromActions.ActionTypes.DELETE, payload: todo.name });
+        this.store.dispatch({ type: fromActions.ActionTypes.DELETE, payload: todo.id });
+    }
+
+    edit(todo: ToDo) {
+        this.store.dispatch({ type: fromActions.ActionTypes.EDIT, payload: todo.id });
     }
 }
