@@ -8,11 +8,13 @@ import { MaterialModule } from '@angular/material';
 import { ToDoList } from './todo.list';
 import { ToDoComponent } from './todo.component';
 import { ToDoForm } from './todo.form';
+import  { YoutubeSearch, YoutubeSearchResults, YoutubeSearchBox } from './youtube';
+
 
 @NgModule({
-    declarations: [ToDoList, ToDoComponent, ToDoForm],
+    declarations: [ToDoList, ToDoComponent, ToDoForm, YoutubeSearch, YoutubeSearchResults, YoutubeSearchBox],
     imports: [CommonModule, FormsModule, MaterialModule],
-    exports: [ToDoComponent],
+    exports: [ToDoComponent, YoutubeSearch],
     providers: []
 })
 export class ToDoModule { }

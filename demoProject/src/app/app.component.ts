@@ -12,6 +12,7 @@ import { Component } from '@angular/core';
                 <ul class="nav navbar-nav">
                     <li><a href="#">ToDo's</a></li>
                     <li><a href="#/aboutus">About Us</a></li>
+                    <li><a href="#/youtube">Youtube Search</a></li>
                 </ul>
             </div>
         </nav>
