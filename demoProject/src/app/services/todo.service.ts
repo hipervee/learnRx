@@ -6,7 +6,7 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class ToDoService {
-    apiUrl: 'http://localhost:3000/';
+    apiUrl:string =  'http://localhost:3000/todos';
 
     toDos: ToDo[];
     constructor(private http: Http) {
@@ -20,20 +20,18 @@ export class ToDoService {
     }
 
     getAll() {
-        console.log('GETALL Called');
-        return this.http.get('http://localhost:3000/' + 'todos').map(response => response.json());
+        return this.http.get(this.apiUrl).map(response => response.json());
     }
 
-    add(name: string) {
-        let todo = new ToDo(this.toDos.length + 1, name);
-        this.toDos.push(todo);
+    save(todo: ToDo) {
+        if(todo.id) {
+            return this.http.put(this.apiUrl, todo);
+        }
+        return this.http.post(this.apiUrl, todo);
     }
 
     delete(todo: ToDo) {
-        let index = this.toDos.findIndex(o => o.id == todo.id);
-        if (index > -1) {
-            this.toDos[index].deleted = true;
-        }
+        return this.http.delete(this.apiUrl + '/' + todo.id);
     }
 
     done(todo: ToDo) {

@@ -1,5 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { ToDoService } from '../services';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { ToDo } from '../models';
 import { Store } from '@ngrx/store';
@@ -15,7 +14,7 @@ export class ToDoComponent implements OnInit {
     todos$: Observable<ToDo[]>;
     todo$: Observable<ToDo>;
 
-    constructor(private store: Store<fromReducer.State>, private todoSvc: ToDoService) { }
+    constructor(private store: Store<fromReducer.State>) { }
 
     ngOnInit() {
         this.todos$ = this.store.select(fromReducer.getToDos);

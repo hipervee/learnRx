@@ -17,6 +17,5 @@ export class ToDoForm  {
 
     add() {
         this.store.dispatch({ type: fromActions.ActionTypes.SAVE, payload: this.todo});
-        //this.todo.clear();
     }
 }

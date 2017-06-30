@@ -1,24 +1,42 @@
 {
-    "posts": [{
-        "id": 1,
-        "title": "json-server",
-        "author": "typicode"
-    }],
-    "comments": [{
-        "id": 1,
-        "body": "some comment",
-        "postId": 1
-    }],
-    "profile": {
-        "name": "typicode"
+  "todos": [
+    {
+      "name": "One",
+      "id": 1
     },
-    "todos": [{
-            "name": "One",
-            "id": 1
-        },
-        {
-            "name": "Two",
-            "id": 2
-        }
-    ]
+    {
+      "name": "Two",
+      "id": 2
+    },
+    {
+      "id": 6,
+      "name": "jhsjhdf",
+      "done": false,
+      "deleted": false
+    },
+    {
+      "id": 7,
+      "name": "we",
+      "done": false,
+      "deleted": false
+    },
+    {
+      "id": 8,
+      "name": "Hi",
+      "done": false,
+      "deleted": false
+    },
+    {
+      "id": 9,
+      "name": "sdfsdf",
+      "done": false,
+      "deleted": false
+    },
+    {
+      "id": 10,
+      "name": "df",
+      "done": false,
+      "deleted": false
+    }
+  ]
 }

@@ -20,6 +20,28 @@ export class ToDoEffects {
                 return new fromActions.LoadCompleteAction(d);
             })
         });
+    
+    @Effect()
+    save$ = this.actions$
+    .ofType(fromActions.ActionTypes.SAVE)
+    .map(action => action.payload)
+    .switchMap((todo) => {
+        return this.todoSvc.save(todo).map(d => {
+                return {
+                    type: fromActions.ActionTypes.LOAD
+                };
+            }).catch(eror => Observable.of({type: fromActions.ActionTypes.LOAD}))
+    });
+
+    @Effect()
+    delete$ = this.actions$
+            .ofType(fromActions.ActionTypes.DELETE)
+            .map(toPayload)
+            .switchMap(todo => {
+                    return this.todoSvc.delete(todo).map(d => {
+                        return new fromActions.LoadCompleteAction(d);
+                    });
+            });
 
     constructor(private actions$: Actions, private todoSvc: ToDoService) {
     }
