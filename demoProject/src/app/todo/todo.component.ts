@@ -20,5 +20,6 @@ export class ToDoComponent implements OnInit {
     ngOnInit() {
         this.todos$ = this.store.select(fromReducer.getToDos);
         this.todo$ = this.store.select('todo');
+        this.store.dispatch({type: fromActions.ActionTypes.LOAD});
     }
 }

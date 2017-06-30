@@ -57,6 +57,13 @@ export function reducer(state = initialState, action: Action): State {
             }
             return state;
         };
+        case fromActions.ActionTypes.LOAD_COMPLETE: {
+            console.log(fromActions.ActionTypes.LOAD);
+            console.log(action.payload);
+            return Object.assign({}, state, {
+                todos: action.payload
+            });
+        }
         default:
             return initialState;
     }
