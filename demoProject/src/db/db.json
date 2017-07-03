@@ -1,11 +1,11 @@
 {
   "todos": [
     {
-      "name": "One",
+      "name": "One ONe",
       "id": 1
     },
     {
-      "name": "Two",
+      "name": "Two dfdf",
       "id": 2
     },
     {
@@ -23,18 +23,6 @@
     {
       "id": 8,
       "name": "Hi",
-      "done": false,
-      "deleted": false
-    },
-    {
-      "id": 9,
-      "name": "sdfsdf",
-      "done": false,
-      "deleted": false
-    },
-    {
-      "id": 10,
-      "name": "df",
       "done": false,
       "deleted": false
     }

@@ -20,14 +20,14 @@ export class ToDoList implements OnInit {
     ngOnInit() { }
 
     done(todo: ToDo) {
-        this.store.dispatch({ type: fromActions.ActionTypes.DONE, payload: todo.name });
+        this.store.dispatch({ type: fromActions.ActionTypes.DONE, payload: todo });
     }
 
     delete(todo: ToDo) {
-        this.store.dispatch({ type: fromActions.ActionTypes.DELETE, payload: todo.id });
+        this.store.dispatch({ type: fromActions.ActionTypes.DELETE, payload: todo });
     }
 
     edit(todo: ToDo) {
-        this.store.dispatch({ type: fromActions.ActionTypes.EDIT, payload: todo.id });
+        this.store.dispatch({ type: fromActions.ActionTypes.EDIT, payload: todo });
     }
 }

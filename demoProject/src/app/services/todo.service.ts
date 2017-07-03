@@ -25,7 +25,7 @@ export class ToDoService {
 
     save(todo: ToDo) {
         if(todo.id) {
-            return this.http.put(this.apiUrl, todo);
+            return this.http.put(this.apiUrl + '/' + todo.id, todo);
         }
         return this.http.post(this.apiUrl, todo);
     }
@@ -35,9 +35,7 @@ export class ToDoService {
     }
 
     done(todo: ToDo) {
-        let index = this.toDos.findIndex(o => o.id == todo.id);
-        if (index > -1) {
-            this.toDos[index].done = true;
-        }
+        todo.done = !todo.done;
+        return this.save(todo);
     }
 }

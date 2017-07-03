@@ -9,34 +9,19 @@ export interface State {
 };
 
 const initialState: State = {
-    todos: [
-        new ToDo(1, "Breakfast"),
-        new ToDo(2, "Lunch"),
-        new ToDo(3, "Now do some work")
-    ],
+    todos: [],
     todo: new ToDo(0, '')
 };
 
 export function reducer(state = initialState, action: Action): State {
     switch (action.type) {
        case fromActions.ActionTypes.EDIT: {
-            let index = state.todos.findIndex(o => o.id == action.payload)
+            let index = state.todos.findIndex(o => o.id == action.payload.id)
             return Object.assign({}, state, {
                 todo: Object.assign({}, state.todos[index])
             });
         };
-        // case fromActions.ActionTypes.DELETE: {
-        //     return Object.assign({}, state, {
-        //         todos: state.todos.filter(o => o.id != action.payload)
-        //     });
-        // };
-        case fromActions.ActionTypes.DONE: {
-            let todo = state.todos.find(o => o.name == action.payload);
-            if (todo) {
-                todo.done = !todo.done
-            }
-            return state;
-        };
+
         case fromActions.ActionTypes.LOAD_COMPLETE: {
             return Object.assign({}, state, {
                 todos: action.payload
